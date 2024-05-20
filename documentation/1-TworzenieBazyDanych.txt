@@ -1,0 +1,15 @@
+Poniżej zamieszczone są komendy MySQL, które pozwalają na stworzenie bazy danych, która będzie w pełni zgodna z aplikacją internetową TenderWeb. Nazwa bazy danych nie jest istotna dla działania serwisu - o ile zostanie odpowiednio zadeklarowana w pliku .env. Nazwy tabel są powiązane z zapytaniami SQL - ich zmiana wymusiłaby konieczność zmiany wartości wszystkich zmiennych query w plikach currentTenderModel.js oraz archivedTenderModel.js z folderze dataAccess
+Sama aplikacja jest stworzona tak, by komponenty były od siebie niezależne - w związku z tym, w przypadku wykorzystania innej technologii bazodanowej, konieczna jest modyfikacja wyłącznie kodu dbConnector, znajdującego się w folderze dataAccess, a także instalacja odpowiedniego sterownika.
+
+
+Stwórz bazę danych:
+CREATE DATABASE TenderDB;
+
+Wejdź w przestrzeń bazy danych:
+USE TenderDB;
+
+Utwórz tabelę Tender:
+CREATE TABLE Tender (ID INT PRIMARY KEY AUTO_INCREMENT, NAME VARCHAR(50) NOT NULL, DETAILS VARCHAR(300) NOT NULL, ISSUER VARCHAR(50) NOT NULL, STARTDATE DATETIME NOT NULL, ENDDATE DATETIME NOT NULL, MAXBUDGET DECIMAL(10,2) NOT NULL);
+
+Utwórz tabelę Offer:
+CREATE TABLE Offer (ID INT PRIMARY KEY AUTO_INCREMENT, OFFERINGPARTY VARCHAR(50) NOT NULL, VALUE DECIMAL(10,2) NOT NULL, OFFERDATE DATETIME NOT NULL, TENDERID INT NOT NULL, FOREIGN KEY(TENDERID) REFERENCES Tender(ID));

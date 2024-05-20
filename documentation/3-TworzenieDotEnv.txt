@@ -1,0 +1,17 @@
+Plik .env powinien zostać umieszczony w tym samym folderze, co plik app.js. Zawierać powinien nie mniej i nie więcej niż 5 linijek - odpowiednio:
+
+DB_HOST=IP hosta lub localhost
+DB_USER=nazwa użytkownika
+DB_PASS=hasło
+DB_NAME=nazwa bazy danych
+DB_PORT=numer portu
+
+Przykładowo dla bazy danych TenderDB, dla użytkownika root o haśle korzeń, uruchomionej domyślnie na maszynie lokalnej i standardowym porcie:
+
+DB_HOST=localhost
+DB_USER=root
+DB_PASS=korzeń
+DB_NAME=TenderDB
+DB_PORT=3306
+
+Pamiętaj aby odpowiednio zmodyfikować parametry w zależności od lokalizacji bazy(zdalnie/stacjonarnie), danych użytkownika z uprawnieniami do bazy danych czy konfiguracji MySQL.
