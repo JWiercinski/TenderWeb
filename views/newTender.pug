@@ -1,0 +1,31 @@
+extends layout
+
+block content
+    h1= title
+    h2 Wypełnij wszystkie elementy formularza i zatwierdź
+    form(action="/tender/current/new", method="POST")
+        p
+            | Nazwa lub obiekt przetargu
+            input(type="text" name="tenderName" placeholder="", maxlength=50, required=true size=45)
+            |
+            p
+            | Jednostka inicjująca
+            input(type="text" name="tenderIssuer" placeholder="", maxlength=50, required=true size=45)
+            |
+            p
+            | Maksymalny budżet
+            input(type="number" name="tenderBudget" placeholder="" required=true size=45)
+            |
+            p
+            |          Opis szczegółów przetargu:
+            textarea(name="tenderDetails" placeholder="" maxlength=300 required=true, rows=5, cols=60)
+            |
+            p
+            |          Data rozpoczęcia przetargu:
+            input(type="datetime-local", name="tenderStartDate" required=true)
+            |
+            p
+            |          Data Zakończenia przetargu:
+            input(type="datetime-local", name="tenderEndDate" required=true)
+        input(type='submit', value='Zainicjuj przetarg')
+    button(type='button', onclick='window.location.href="/"') Strona Główna

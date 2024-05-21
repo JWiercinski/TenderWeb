@@ -1,0 +1,50 @@
+extends layout
+
+block content
+    style.
+        table {
+            border-collapse: collapse;
+        }
+        td, th {
+            border: 1px solid black;
+            padding: 8px;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    h1=variant + " przetargi"
+    table
+        thead
+            tr
+                th ID
+                th Przedmiot przetargu
+                th Organizator
+                if variant !="Archiwalne"
+                    th Data Rozpoczęcia
+                    th Data Zakończenia
+                else
+                    th Status
+                if variant=="Archiwalne"
+                    th Budżet
+                th Przejdź do szczegółów
+
+        tbody
+            each row in rows
+                tr
+                    td= row.ID
+                    td= row.NAME
+                    td= row.ISSUER
+                    if variant != "Archiwalne"
+                        td= moment(row.STARTDATE).format("YYYY-MM-DD HH:mm")
+                        td= moment(row.ENDDATE).format("YYYY-MM-DD HH:mm")
+                    else
+                        td="Zakończono zbieranie ofert"
+                    if variant=="Archiwalne"
+                        td= row.MAXBUDGET
+                    td
+                        if variant=="Aktualne"
+                            button(type="button", onclick=`window.location.href="/tender/current/${row.ID}"`) Przejdź do szczegółów
+                        if variant=="Nadchodzące"
+                            button(type="button", onclick=`window.location.href="/tender/incoming/${row.ID}"`) Przejdź do szczegółów
+                        if variant=="Archiwalne"
+                            button(type="button", onclick=`window.location.href="/tender/archive/${row.ID}"`) Przejdź do szczegółów

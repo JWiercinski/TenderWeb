@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1 Witamy w serwisie przetargowym TenderWeb
+  //h1= title
+  //p Welcome to #{title}
+  p W niniejszej aplikacji możesz zobaczyć aktywne oraz zakończone przetargi,
+  p zainicjować procedurę przetargową, bądź też złożyć ofertę do odpowiedniego przetargu.
+  p Naciśnij jeden z przycisków poniżej, aby przejść do odpowiedniego modułu.
+  button(type='button', onclick='window.location.href="/"') Strona Główna
+  button(type="button", onclick='window.location.href="/tender/current"') Aktualne Przetargi
+  button(type="button", onclick='window.location.href="/tender/incoming"') Nadchodzące Przetargi
+  //button(type="button", onclick='window.location.href="/tender/archive"') Archiwalne Przetargi
+  p
+  button(type="button", onclick='window.location.href="/tender/incoming/new"') Dodaj Przetarg

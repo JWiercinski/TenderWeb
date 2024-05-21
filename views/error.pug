@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  h1= error.status+" "+message
+  h2 Wygląda na to, że taka strona nie istnieje :'-(
+  //pre #{error.stack}
+  p Jeśli masz pewność, że twój link był prawidłowy - prosimy o przekazanie problemu administracji serwisu

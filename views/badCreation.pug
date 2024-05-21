@@ -1,0 +1,7 @@
+extends layout
+
+block content
+    h1= "Nie udało się utworzyć " + variant
+    h2= "Oto lista wykrytych problemów:"
+    p= problems
+    button(type='button', onclick='window.location.href="/"') Wróć na stronę główną
