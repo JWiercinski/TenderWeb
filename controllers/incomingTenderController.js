@@ -34,7 +34,7 @@ const createTender = async function (req, res)
 {
     const bugs = await incomingTenderService.addTender(req.body)
     if (bugs.length>0)
-        res.render("badCreation", {variant: "oferty", problems: bugs})
+        res.render("badCreation", {variant: "przetargu", problems: bugs})
     else
         res.render("okCreation", {variant: "przetargu"})
 }

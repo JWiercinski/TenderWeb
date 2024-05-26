@@ -1,0 +1,46 @@
+extends layout
+
+block content
+    style.
+        table {
+            border-collapse: collapse;
+        }
+
+        td, th {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    button(type='button', onclick='window.location.href="/"') Strona Główna
+    h1= title
+    h2 Obecny przetarg:
+    table
+        thead
+            tr
+                th ID
+                th Przedmiot przetargu
+                th Organizator
+                th Data Rozpoczęcia
+                th Data Zakończenia
+        tbody
+            tr
+                td= tender.ID
+                td= tender.NAME
+                td= tender.ISSUER
+                td= moment(tender.STARTDATE).format("YYYY-MM-DD HH:mm")
+                td= moment(tender.ENDDATE).format("YYYY-MM-DD HH:mm")
+    h2 Wypełnij wszystkie elementy formularza i zatwierdź
+    form(action="/offer/current/new", method="POST")
+        p
+            | Wystawca oferty
+            input(type="text" name="offerParty" placeholder="", maxlength=50, required=true size=45)
+            |
+            p
+            | Kwota przetargu
+            input(type="number" name="offerValue" placeholder="" required=true size=45)
+            input(type="hidden" name="tenderId" value=tender.ID)
+            input(type="hidden" name="tenderEnd" value=tender.ENDDATE)
+        input(type='submit', value='Wprowadź ofertę')

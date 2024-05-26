@@ -25,5 +25,5 @@ block content
         h2="Maksymalny budżet:"
         h3=data.MAXBUDGET
     if status == "Aktywny"
-        button(type="button", onclick=`window.location.href="/tender/archive/${data.ID}/offer/new"`) Utwórz ofertę
+        button(type="button", onclick=`window.location.href="/offer/current/${data.ID}/new"`) Utwórz ofertę
     p

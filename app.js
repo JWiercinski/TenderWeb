@@ -9,6 +9,7 @@ var indexRouter = require('./routes/indexRouter');
 var currentTenderRouter = require("./routes/currentTenderRouter")
 var incomingTenderRouter = require("./routes/incomingTenderRouter")
 var archiveTenderRouter = require("./routes/archiveTenderRouter")
+var currentOfferRouter = require("./routes/currentOfferRouter")
 
 var app = express();
 
@@ -26,6 +27,7 @@ app.use('/', indexRouter);
 app.use("/tender/current", currentTenderRouter)
 app.use("/tender/incoming", incomingTenderRouter)
 app.use("/tender/archive", archiveTenderRouter)
+app.use("/offer/current", currentOfferRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
