@@ -3,8 +3,7 @@ const createTender=async(data) =>
 {
     var date = new Date()
     date=date.toISOString().slice(0,16);
-    console.log(date, data.tenderEndDate, data.tenderStartDate)
-    console.log(data.tenderEndDate<date)
+    //console.log(data.tenderEndDate<date, data.tenderStartDate>data.tenderEndDate, data.tenderStartDate<date)
     bugs=""
     if (data.tenderEndDate<data.tenderStartDate)
         bugs= bugs + "Przetarg nie może zakończyć się przed rozpoczęciem. "
@@ -12,7 +11,8 @@ const createTender=async(data) =>
         bugs= bugs + "Nowy przetarg nie może zakończyć się w przeszłości. "
     if (data.tenderStartDate<date)
         bugs= bugs + "Nowy przetarg nie może rozpocząć się w przeszłości. "
-    if (bugs.length>0) {
+    //console.log(bugs.length)
+    if (bugs.length==0) {
         try {
             const query = `INSERT INTO Tender (NAME, DETAILS, ISSUER, MAXBUDGET, STARTDATE, ENDDATE) VALUES ("${data.tenderName}", "${data.tenderDetails}", "${data.tenderIssuer}", ${data.tenderBudget}, "${data.tenderStartDate}", "${data.tenderEndDate}")`
             const result = await databaseConnector.dbQueryInsert(query)

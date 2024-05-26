@@ -12,6 +12,7 @@ block content
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
+    button(type='button', onclick='window.location.href="/"') Strona Główna
     h1=variant + " przetargi"
     table
         thead
@@ -42,7 +43,7 @@ block content
                     if variant=="Archiwalne"
                         td= row.MAXBUDGET
                     td
-                        if variant=="Aktualne"
+                        if variant=="Aktywne"
                             button(type="button", onclick=`window.location.href="/tender/current/${row.ID}"`) Przejdź do szczegółów
                         if variant=="Nadchodzące"
                             button(type="button", onclick=`window.location.href="/tender/incoming/${row.ID}"`) Przejdź do szczegółów

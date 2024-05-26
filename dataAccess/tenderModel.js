@@ -8,7 +8,7 @@ const selectAllTenders=async(queryend) =>
 }
 const selectOneTender=async(id, queryend)=>
 {
-    const query = `SELECT * FROM Tender WHERE ID=${id} AND ` + queryend
+    const query = `SELECT * FROM Tender ` + queryend + `AND ID='${id}'`
     const result = await databaseConnector.dbQuerySelect(query)
     return result
 }

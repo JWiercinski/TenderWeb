@@ -8,6 +8,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/indexRouter');
 var currentTenderRouter = require("./routes/currentTenderRouter")
 var incomingTenderRouter = require("./routes/incomingTenderRouter")
+var archiveTenderRouter = require("./routes/archiveTenderRouter")
 
 var app = express();
 
@@ -24,6 +25,7 @@ app.locals.moment=moment
 app.use('/', indexRouter);
 app.use("/tender/current", currentTenderRouter)
 app.use("/tender/incoming", incomingTenderRouter)
+app.use("/tender/archive", archiveTenderRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

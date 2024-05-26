@@ -1,0 +1,29 @@
+extends layout
+
+block content
+    button(type='button', onclick='window.location.href="/"') Strona Główna
+    if status=="Aktywny"
+        button(type="button", onclick='window.location.href="/tender/current"') Aktywne Przetargi
+    if status=="Nadchodzący"
+        button(type="button", onclick='window.location.href="/tender/incoming"') Nadchodzące Przetargi
+    if status=="Archiwalny"
+        button(type="button", onclick='window.location.href="/tender/archive"') Archiwalne Przetargi
+    h1=status + " przetarg"
+    h2="Identyfikator przetargu:"
+    h3=data.ID
+    h2="Przedmiot przetargu:"
+    h3=data.NAME
+    h2="Opis przetargu:"
+    h3=data.DETAILS
+    h2="Organizator przetargu:"
+    h3=data.ISSUER
+    h2="Data rozpoczęcia:"
+    h3=moment(data.STARTDATE).format("YYYY-MM-DD HH:mm")
+    h2="Data zakończenia:"
+    h3=moment(data.ENDDATE).format("YYYY-MM-DD HH:mm")
+    if status == "Archiwalny"
+        h2="Maksymalny budżet:"
+        h3=data.MAXBUDGET
+    if status == "Aktywny"
+        button(type="button", onclick=`window.location.href="/tender/archive/${data.ID}/offer/new"`) Utwórz ofertę
+    p

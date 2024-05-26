@@ -1,0 +1,7 @@
+extends layout
+
+block content
+    h1="Inicjalizacja " + variant + " zakończona sukcesem."
+    button(type='button', onclick='window.location.href="/"') Wróć na stronę główną
+    if variant=="przetargu"
+        button(type="button", onclick='window.location.href="/tender/incoming"') Przejdź do nadchodzacych przetargów

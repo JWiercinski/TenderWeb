@@ -1,0 +1,50 @@
+Aplikacja została napisana z wykorzystaniem: 
+Node.js w wersji 18.19.1,
+Pug 2.0.0-beta11,
+Express ~4.16.1.
+Do obsługi bibliotek zastosowano npm w wersji 9.2.0
+
+
+Uruchomienie aplikacji może zostać zrealizowane za pomocą komendy npm start.
+Niniejsza aplikacja internetowa została zaprojektowana pod kątem prostoty
+użytkowania, zatem na każdej podstronie obecne są uproszczone instrukcje
+czynności, które można wykonać na poszczególnych elementach.
+
+W związku ze skupieniem na warstwie architekturalnej, nieobecne są 
+jakiekolwiek bardziej zaawansowane elementy graficzne.
+
+Podział ze względu na logikę biznesową został zrealizowany według poniższego
+wzorca:
+
+________
+|   P  |
+|   R  | ---> Archiwalny  ----> Archiwalna oferta
+|   Z  |
+|   E  |
+|   T  | ---> Aktywny     ----> Aktywna oferta
+|   A  |
+|   R  |
+|   G  | ---> Nadchodzący
+________
+
+
+Możliwe jest stworzenie nadchodzącego przetargu oraz oferty do aktywnego
+przetargu.
+
+Archiwalny przetarg pozwala na zobaczenie wszystkich przetargów, szczegółów
+danych przetargów w pełni jawnie, oraz danych ofert.
+
+Aktualny przetarg pozwala na zobaczenie aktywnych przetargów bez danych o
+budżecie oraz złożonych ofertach - pozwala jednak na złożenie oferty do 
+danego przetargu.
+
+Nadchodzący przetarg pozwala na zobaczenie nadchodzących przetargów, bez
+danych o budżecie.
+
+Architekturalnie, aplikacja oparta jest o model MVC(Model-View-Controller),z
+wykorzystaniem serwisów oraz modeli bezpośredniego dostępu do danych.
+Istnieją serwisy uniwersalne, dla wszystkich typów przetargów, oraz serwisy
+odpowiednie wyłącznie dla danego typu poszukiwanych danych. Jest to również
+widoczne w warstwie dataAccess, w którym dbConnector to element najbardziej
+ogólny, zaś pozostałe są wyspecjalizowane dla konkretnych elementów - jednak 
+wykorzystują one dbConnector do samego połączenia z bazą danych.

@@ -1,9 +1,10 @@
 extends layout
 
 block content
+    button(type='button', onclick='window.location.href="/"') Strona Główna
     h1= title
     h2 Wypełnij wszystkie elementy formularza i zatwierdź
-    form(action="/tender/current/new", method="POST")
+    form(action="/tender/incoming/new", method="POST")
         p
             | Nazwa lub obiekt przetargu
             input(type="text" name="tenderName" placeholder="", maxlength=50, required=true size=45)
@@ -28,4 +29,3 @@ block content
             |          Data Zakończenia przetargu:
             input(type="datetime-local", name="tenderEndDate" required=true)
         input(type='submit', value='Zainicjuj przetarg')
-    button(type='button', onclick='window.location.href="/"') Strona Główna
