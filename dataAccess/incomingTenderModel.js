@@ -3,6 +3,7 @@ const {getDate} = require("./universalModel");
 const createTender=async(data) =>
 {
     var date = await getDate()
+    //console.log(date>data.tenderEndDate, data.tenderEndDate, date)
     //console.log(data.tenderEndDate<date, data.tenderStartDate>data.tenderEndDate, data.tenderStartDate<date)
     bugs=""
     if (data.tenderEndDate<data.tenderStartDate)
@@ -21,6 +22,7 @@ const createTender=async(data) =>
             if (error.errno==1264)
                 bugs="Wprowadzone dane daty bądź maksymalnego budżetu są nieprawidłowe"
             else
+                //console.log(error)
                 bugs="Wykryto nieznany błąd. Prosimy o kontakt z administracją serwisu"
         }
     }
