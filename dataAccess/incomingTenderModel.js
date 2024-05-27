@@ -1,8 +1,8 @@
 const databaseConnector = require("./dbConnector");
+const {getDate} = require("./universalModel");
 const createTender=async(data) =>
 {
-    var date = new Date()
-    date=date.toISOString().slice(0,16);
+    var date = await getDate()
     //console.log(data.tenderEndDate<date, data.tenderStartDate>data.tenderEndDate, data.tenderStartDate<date)
     bugs=""
     if (data.tenderEndDate<data.tenderStartDate)

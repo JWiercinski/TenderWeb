@@ -1,9 +1,11 @@
 const tenderService = require("../services/tenderService");
 const incomingTenderService = require("../services/incomingTenderService")
+const universalService = require("../services/universalService")
 
 const getAllTenders = async function (req, res)
 {
-    const tenders = await tenderService.allTenders(queryend())
+    const date = await universalService.currentDate()
+    const tenders = await tenderService.allTenders(queryend(date))
     if (tenders.length>0)
     {
         res.render("allTenders", {variant: "Nadchodzące", rows: tenders})
@@ -17,7 +19,8 @@ const getAllTenders = async function (req, res)
 const getOneTender = async function (req, res)
 {
     try {
-        const tender = await tenderService.oneTender(req.params.id, queryend())
+        const date = await universalService.currentDate()
+        const tender = await tenderService.oneTender(req.params.id, queryend(date))
         res.render("singleTender", {data: tender[0], status: "Nadchodzący"})
     }
     catch (error) {
@@ -39,10 +42,7 @@ const createTender = async function (req, res)
         res.render("okCreation", {variant: "przetargu"})
 }
 
-function queryend () {
-    var date = new Date()
-    date=date.toISOString().slice(0,16);
-    date.toString()
+function queryend (date) {
     query="WHERE STARTDATE > '" + date + "'"
     return query
 }

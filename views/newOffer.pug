@@ -14,7 +14,10 @@ block content
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
+    - var url = "/tender/current/" + tender.ID
     button(type='button', onclick='window.location.href="/"') Strona Główna
+    button(type="button" onclick='window.location.href="/tender/current"') Aktywne przetargi
+    button(type="button", onclick=`window.location.href="${url}"`) Szczegóły przetargu
     h1= title
     h2 Obecny przetarg:
     table
@@ -23,8 +26,8 @@ block content
                 th ID
                 th Przedmiot przetargu
                 th Organizator
-                th Data Rozpoczęcia
-                th Data Zakończenia
+                th Data Rozpoczęcia (UTC)
+                th Data Zakończenia (UTC)
         tbody
             tr
                 td= tender.ID

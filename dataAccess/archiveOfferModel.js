@@ -1,9 +1,9 @@
 const databaseConnector = require("./dbConnector")
+const {getDate} = require("./universalModel");
 
 const selectOffers=async(data)=>
 {
-    var date = new Date()
-    date=date.toISOString().slice(0,16);
+    var date = await getDate()
     var result=[]
     console.log(data.ENDDATE, date)
     if (data.ENDDATE.toISOString().slice(0,16) < date) {

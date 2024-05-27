@@ -17,9 +17,9 @@ block content
     h3=data.DETAILS
     h2="Organizator przetargu:"
     h3=data.ISSUER
-    h2="Data rozpoczęcia:"
+    h2="Data rozpoczęcia(UTC):"
     h3=moment(data.STARTDATE).format("YYYY-MM-DD HH:mm")
-    h2="Data zakończenia:"
+    h2="Data zakończenia(UTC):"
     h3=moment(data.ENDDATE).format("YYYY-MM-DD HH:mm")
     if status == "Archiwalny"
         h2="Maksymalny budżet:"
