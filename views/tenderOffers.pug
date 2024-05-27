@@ -1,0 +1,58 @@
+extends layout
+
+block content
+    style.
+        table {
+            border-collapse: collapse;
+        }
+
+        td, th {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    - var url = "/tender/archive/" + tender.ID
+    button(type='button', onclick='window.location.href="/"') Strona główna
+    button(type="button" onclick='window.location.href="/tender/archive"') Archiwalne przetargi
+    button(type="button", onclick=`window.location.href="${url}"`) Szczegóły przetargu
+    h1 Archiwalny przetarg:
+    table
+        thead
+            tr
+                th ID
+                th Przedmiot przetargu
+                th Organizator
+                th Data Rozpoczęcia
+                th Data Zakończenia
+                th Maksymalny Budżet
+        tbody
+            tr
+                td= tender.ID
+                td= tender.NAME
+                td= tender.ISSUER
+                td= moment(tender.STARTDATE).format("YYYY-MM-DD HH:mm")
+                td= moment(tender.ENDDATE).format("YYYY-MM-DD HH:mm")
+                td= tender.MAXBUDGET
+    h2= "Szczegóły przetargu"
+    p= tender.DETAILS
+    p
+    if offers.length>0
+        h1= "Oferty spełniające wymagania budżetowe:"
+        table
+            thead
+                tr
+                    th Wystawca oferty
+                    th Wartość oferty
+                    th Data wystawienia oferty
+            tbody
+                each row in offers
+                    tr
+                        td=row.OFFERINGPARTY
+                        td=row.VALUE
+                        td= moment(row.OFFERDATE).format("YYYY-MM-DD HH:mm")
+    if offers.length==0
+        h1= "Przetarg zakończony bez rozstrzygnięcia"
+        p Nie złożono ofert zgodnych z budżetem przedsięwzięcia

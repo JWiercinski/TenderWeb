@@ -29,7 +29,8 @@ function queryend () {
     var date = new Date()
     date=date.toISOString().slice(0,16);
     date.toString()
-    query="WHERE ENDDATE > '" + date + "' AND STARTDATE < '" + date +"'"
+    console.log(date)
+    query="WHERE ENDDATE > '" + date + "' AND STARTDATE <= '" + date +"'"
     return query
 }
 

@@ -4,7 +4,7 @@ const createOffer=async(data) =>
     var date = new Date()
     date=date.toISOString().slice(0,16);
     bugs=""
-    if (data.tenderEnd<date)
+    if (data.tenderEndDate<date)
         bugs="Data zakończenia zbierania ofert minęła."
     else {
         try {

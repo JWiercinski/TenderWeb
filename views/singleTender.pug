@@ -24,6 +24,7 @@ block content
     if status == "Archiwalny"
         h2="Maksymalny budżet:"
         h3=data.MAXBUDGET
+        button(type="button" onclick=`window.location.href="/offer/archive/${data.ID}"`) Przejdź do listy ofert
     if status == "Aktywny"
         button(type="button", onclick=`window.location.href="/offer/current/${data.ID}/new"`) Utwórz ofertę
     p
